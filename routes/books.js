@@ -2,7 +2,7 @@
 
 const express = require('express');
 const knex = require('../knex');
-const { camelize, decamelize } = require('humps');
+const { camelizeKeys, decamelizeKeys } = require('humps');
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
@@ -37,7 +37,8 @@ router.get('/books/:id?', function (request, response, next) {
     knex('books')
       .orderBy('title')
       .then((result) => {
-        response.send(result);
+        const sendResult = camelizeKeys(result);
+        response.send(sendResult);
       })
       .catch((err) => {
         next(err);
@@ -48,7 +49,8 @@ router.get('/books/:id?', function (request, response, next) {
     knex('books')
       .where('id', reqId)
       .then((result) => {
-        response.send(result);
+        const sendResult = camelizeKeys(result);
+        response.send(sendResult[0]);
       })
       .catch((err) => {
         next(err);
