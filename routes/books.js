@@ -61,13 +61,13 @@ router.get('/books/:id?', function (request, response, next) {
 router.post('/books', function(request, response, next) {
   // const body = decamelizeKeys(request.body);
   knex('books')
-    .insert([{
+    .insert({
       title: request.body.title,
       author: request.body.author,
       genre: request.body.genre,
       description: request.body.description,
       cover_url: request.body.coverUrl
-    }])
+    }, '*')
     .then((result) => {
       response.set('Content-Type', 'application/json');
       response.send(result[0]);

@@ -89,6 +89,6 @@ exports.seed = function(knex, Promise) {
       ]);
     })
     .then(function() {
-      knex('books').select(knex.raw("setval('books_id_seq', (SELECT MAX(id) FROM books)"));
+      return knex.raw("SELECT setval('books_id_seq', (SELECT MAX(id) FROM books))");
     });
 };
