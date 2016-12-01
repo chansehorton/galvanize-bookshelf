@@ -2,7 +2,7 @@
 
 const express = require('express');
 const knex = require('../knex');
-const { camelizeKeys, decamelizeKeys } = require('humps');
+const { camelizeKeys } = require('humps');
 const boom = require('boom');
 
 // eslint-disable-next-line new-cap
