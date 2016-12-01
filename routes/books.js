@@ -74,35 +74,40 @@ router.get('/books/:id?', function (request, response, next) {
 
 router.post('/books', function(request, response, next) {
   let newBook = {};
+
+  response.set('Content-Type', 'application/json');
+
   if (request.body.title === undefined) {
-    next(boom.create(400, "Title must not be blank"));
+    return next(boom.create(400, "Title must not be blank"));
   }
   if (request.body.author === undefined) {
-    next(boom.create(400, "Author must not be blank"));
+    return next(boom.create(400, "Author must not be blank"));
   }
   if (request.body.genre === undefined) {
-    next(boom.create(400, "Genre must not be blank"));
+    return next(boom.create(400, "Genre must not be blank"));
   }
   if (request.body.description === undefined) {
-    next(boom.create(400, "Description must not be blank"));
+    return next(boom.create(400, "Description must not be blank"));
   }
-  if (request.body.cover_url === undefined) {
-    next(boom.create(400, "Cover URL must not be blank"));
+  if (request.body.coverUrl === undefined) {
+    return next(boom.create(400, "Cover URL must not be blank"));
   }
+
   newBook.title = request.body.title;
   newBook.author = request.body.author;
   newBook.genre = request.body.genre;
   newBook.description = request.body.description;
   newBook.cover_url = request.body.coverUrl;
 
+
   knex('books')
     .insert(newBook, ['id', 'title', 'author', 'genre', 'description', 'cover_url'])
     .then((result) => {
-      response.set('Content-Type', 'application/json');
       const sendResult = camelizeKeys(result);
       response.send(sendResult[0]);
     })
     .catch((err) => {
+      console.log(err);
       next(err);
     });
 });
