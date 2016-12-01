@@ -116,8 +116,28 @@ router.patch('/books/:id', function(request, response, next) {
   };
 });
 
-router.delete('/:id', function(request, response, next) {
-  
+router.delete('/books/:id', function(request, response, next) {
+  let reqId = parseInt(request.params.id, 10);
+  let delBook;
+
+  knex('books')
+    .where ('id', reqId)
+    .first()
+    .then((delRow) => {
+      if (!delRow) {
+        return next();
+      }
+      delBook = delRow;
+      return knex('books')
+        .del()
+        .where('id', reqId);
+    })
+    .then(() => {
+      response.send(delBook);
+    })
+    .catch((err) => {
+      next(err);
+    });
 });
 
 // router.put('/:id', function(request, response, next) {
