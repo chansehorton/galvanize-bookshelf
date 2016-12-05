@@ -36,7 +36,7 @@ router.post('/users', function(request, response, next) {
         newUser.last_name = request.body.lastName;
         newUser.email = request.body.email;
 
-        let hash = bcrypt.hashSync(request.body.password, 8);
+        let hash = bcrypt.hashSync(request.body.password, 10);
 
         newUser.hashed_password = hash;
 

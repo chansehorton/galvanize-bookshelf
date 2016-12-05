@@ -1,0 +1,85 @@
+Arguments: 
+  /Users/chansehorton/.nvm/versions/node/v6.7.0/bin/node /usr/local/bin/yarn init
+
+PATH: 
+  /Users/chansehorton/.nvm/versions/node/v6.7.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin: /usr/local/Cellar/node/7.2.0/bin
+
+Yarn version: 
+  0.17.9
+
+Node version: 
+  6.7.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "galvanize-bookshelf",
+    "version": "1.0.0",
+    "description": "Create a web application to manage your book collection",
+    "main": "server.js",
+    "scripts": {
+      "heroku-postbuild": "knex migrate:latest",
+      "knex": "knex",
+      "lint": "eslint  --ignore-pattern public/js/vendor",
+      "nf": "nf start",
+      "start": "nodemon server.js",
+      "test": "mocha"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/gschool/galvanize-bookshelf.git"
+    },
+    "author": "Ian Smith <ian.smith@galvanize.com>",
+    "contributors": [
+      "Ken McGrady <ken.mcgrady@galvanize.com>",
+      "Ryan Sobol <ryan.sobol@galvanize.com>"
+    ],
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/gschool/galvanize-bookshelf/issues"
+    },
+    "homepage": "https://github.com/gschool/galvanize-bookshelf#readme",
+    "dependencies": {
+      "bcrypt": "^0.8.7",
+      "bcrypt-as-promised": "^1.1.0",
+      "body-parser": "^1.15.2",
+      "boom": "^3.2.2",
+      "cookie-parser": "^1.4.3",
+      "dotenv": "^2.0.0",
+      "express": "^4.14.0",
+      "humps": "^1.1.0",
+      "jsonwebtoken": "^7.1.9",
+      "knex": "^0.11.10",
+      "morgan": "^1.7.0",
+      "pg": "^6.1.0"
+    },
+    "devDependencies": {
+      "chai": "^3.5.0",
+      "dotenv": "^2.0.0",
+      "eslint": "^3.1.1",
+      "eslint-config-ryansobol": "^7.7.0",
+      "foreman": "^1.4.1",
+      "mocha": "^2.5.3",
+      "nodemon": "^1.10.0",
+      "supertest": "^1.2.0"
+    },
+    "engines": {
+      "node": "6.3.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  TypeError: Cannot convert object to primitive value
+      at Object.<anonymous> (/usr/local/Cellar/yarn/0.17.9/libexec/lib/node_modules/yarn/lib/cli/commands/init.js:93:27)
+      at next (native)
+      at step (/usr/local/Cellar/yarn/0.17.9/libexec/lib/node_modules/yarn/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at /usr/local/Cellar/yarn/0.17.9/libexec/lib/node_modules/yarn/node_modules/babel-runtime/helpers/asyncToGenerator.js:28:13
+      at process._tickCallback (internal/process/next_tick.js:103:7)
